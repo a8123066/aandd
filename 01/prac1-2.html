@@ -11,13 +11,11 @@
     <script>
         function runButtonPressed() {
             var numbers = [];
-            //prac1-1 0を10個挿入する
-            for (var i =0;i<10;i++){
-                numbers.push(0);
-            }
+            
+            
             //prac1-2 
             var ran_num;
-            for (var i=0;i<10;){
+            for (var i=0;i<10;i++){
                 ran_num=Math.floor(Math.random()*10)+1;
                 numbers.push(ran_num);
             }
@@ -30,7 +28,7 @@
 </head>
 
 <body>
-    <h1>prac1-1</h1>
+    <h1>prac1-2</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>
