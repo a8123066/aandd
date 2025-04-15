@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            
+            
+            
+            //prac1-3 '田中'を10個挿入する
+            for(var i=0;i<10;i++){
+                numbers.push("田中");
+            }
+            //prac1-4 1から20までの数を順に20個挿入する
+            show(numbers);
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-3</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
