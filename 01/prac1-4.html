@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            //prac1-4 1から20までの数を順に20個挿入する
+            for (var i=1;i<=20;i++){
+                
+                numbers.push(i);
+            }
+            show(numbers);
+        }
+    ;</script>
+
+</head>
+
+<body>
+    <h1>prac1-4</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
