@@ -29,3 +29,18 @@ function show(obj) {
         document.getElementById('res').insertAdjacentHTML('beforeend', string);
     }
 }
+
+
+function createSequentialNumbers(array, n){
+    for (var i=0;i<n;i++){
+        array.push(i+1);
+    }
+}
+
+function createRandomNumbers(array, n){
+    var ran_n;
+    for (var i=0;i<n;i++){
+        ran_n=Math.floor(Math.random()*10+1);
+        array.push(ran_n);
+    }
+}
