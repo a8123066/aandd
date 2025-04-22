@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            //prac1-5〜 1から10までの数を順に10個挿入する
+            for (var i=0;i<10;i++){
+                
+                numbers.push(i+1);
+                numbers[i]=numbers[i]*10;
+            }
+
+            
+            //prac1-5 全ての要素に10を足す
+            //prac1-6 全ての要素に10をかける
+            show(numbers);
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-6</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
