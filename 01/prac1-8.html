@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            //prac1-7 1からNまでの数を順にN個挿入する関数を作る
+            //関数名：createSequentialNumbers(array, n)
+            //できたら，関数定義をaandd.jsに移す
+            //prac1-8 N個の乱数を挿入する関数を作る
+            //関数名：createRandomNumbers(array, n)
+            //できたら，関数定義をaandd.jsに移す
+            createRandomNumbers(numbers, 10);
+            show(numbers);
+
+            
+        }
+
+        
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-8</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
