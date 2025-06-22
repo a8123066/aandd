@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var array1 = [];
+        var times = 0;
+
+        function runButtonPressed() {
+            var start_time = new Date();
+            var array2 = [];
+            createRandomNumbers(array2, 100000);
+            show(array2);
+            change_array(array2);
+            var end_time = new Date();
+            var period = end_time - start_time;
+            document.getElementById("time_result").innerHTML = period;
+            show(array2);
+        }
+
+        function runonceButtonPressed() {
+            if (times == 0) {
+                createRandomNumbers(array1, 10);
+                show(array1);
+            }
+            times += 1;
+            change_once_array(array1, times)
+            show(array1);
+        }
+
+        function change_once_array(array, t) {
+            for (var i = 0; i < t; i++) {
+                if (array[t - i] < array[t - i - 1]) {
+                    var tmp = array[t - i];
+                    array[t - i] = array[t - i - 1];
+                    array[t - i - 1] = tmp;
+                } else {
+                    break;
+                }
+            }
+            return array;
+        }
+        
+        function change_array(array) {
+            var len = array.length;
+            for (var i = 0; i < len; i++) {
+                if (i > 0) {
+                    array = change_once_array(array, i)
+                }
+            }
+            return array;
+        }
+
+        function test(array, expected) {
+            console.log(array);
+
+            console.log(array);
+            change_array(array)
+            console.log(array);
+            console.log(expected);
+            if (compare_array(array, expected) == "True") {
+                console.log("True")
+            } else {
+                console.log("False")
+            }
+        }
+
+        function main() {
+            test([2, 66, 6, 78], [2, 6, 66, 78]);
+            test([2, 6, 6, 78], [2, 6, 6, 78]);
+            test([0.11, 0.22, 0.10, 1.11], [0.10, 0.11, 0.22, 1.11]);
+            test([2, -44, 4, 88, -9, 0], [-44, -9, 0, 2, 4, 88]);
+        }
+        main();
+    </script>
+
+</head>
+
+<body>
+    <h1>4-4</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <button onclick="runonceButtonPressed()">runonce</button>
+    <p id="res"></p>
+    <p id="time_result">
+    </p>
+</body>
+
+</html>
