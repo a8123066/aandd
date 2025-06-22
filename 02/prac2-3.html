@@ -15,23 +15,22 @@
             //(nとmは乱数にて決定する)
             //prac2-3 prac2-2を20回繰り返す（シャッフルプログラムの完成）
             var numbers = [];
-            for (var i=0;i<10;i++){
-                
-                numbers.push(i+1);
+            for (var i = 0; i < 10; i++) {
+
+                numbers.push(i + 1);
             }
-            for (var i=0;i<20;i++){
+            show(numbers)
+            for (var i = 0; i < 100; i++) {
                 var tmp;
-                var n=Math.floor(Math.random()*10);
-                var m=Math.floor(Math.random()*10);
-                tmp=numbers[n];
-                numbers[n]=numbers[m];
-                numbers[m]=tmp;
+                var n = Math.floor(Math.random() * 10);
+                var m = Math.floor(Math.random() * 10);
+                tmp = numbers[n];
+                numbers[n] = numbers[m];
+                numbers[m] = tmp;
                 console.log(n);
                 console.log(m);
                 show(numbers);
-                
             }
-            
         }
     </script>
 
