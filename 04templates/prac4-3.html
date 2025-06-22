@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var numbers2 = [];
+        var times = 0;
+        function makearray() {
+            createRandomNumbers(numbers2, 10);
+        }
+        function runButtonPressed() {
+            var numbers = [];
+            var start_time = new Date();
+            createRandomNumbers(numbers, 100000);
+            console.log(numbers);
+            show(numbers);
+            array_asc(numbers);
+            var end_time = new Date();
+            var period = end_time - start_time;
+            document.getElementById("time_result").innerHTML = period;
+            show(numbers);
+        }
+        function runonceButtonPressed() {
+            if (times < numbers2.length) {
+                console.log(numbers2);
+                var min_n = change_min(numbers2, times);
+                var min = numbers2[min_n];
+                numbers2[min_n] = numbers2[times]
+                numbers2[times] = min;
+                times += 1;
+            }
+            show(numbers2);
+        }
+
+        function change_min(array, len) {
+            min = 1000000000000000;
+            n = 0;
+            var array_len = array.length
+            for (var i = len; i < array.length; i++) {
+                if (array[i] < min) {
+                    min = array[i];
+                    n = i;
+                }
+            }
+            return n;
+        }
+        function array_asc(array) {
+            var array_len = array.length;
+            var asc_times = 0;
+            var min_n = 0;
+            for (var i = 0; i < array_len; i++) {
+                min = 100000000000000;
+                for (var k = asc_times; k < array_len; k++) {
+                    if (array[k] < min) {
+                        min = array[k];
+                        min_n = k;
+                    }
+                }
+                var min = array[min_n]
+                array[min_n] = array[asc_times]
+                array[asc_times] = min;
+                asc_times += 1;
+            }
+            return array;
+        }
+        function test(array, expected) {
+            console.log(array);
+            var new_array = array_asc(array);
+            var check = compare_array(new_array, array);
+
+
+
+            console.log(expected);
+            console.log(new_array);
+
+            if (check == 0) {
+                console.log("True");
+            } else {
+                console.log("False")
+            }
+        }
+        function main() {
+            test([2, 66, 6, 78], [2, 6, 66, 78]);
+            test([2, 6, 6, 78], [2, 6, 6, 78]);
+            test([0.11, 0.22, 0.10, 1.11], [0.10, 0.11, 0.22, 1.11]);
+            test([2, -44, 4, 88, -9, 0], [-44, -9, 0, 2, 4, 88]);
+        }
+        main();
+
+
+
+        makearray();
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>4-3</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <button onclick="runonceButtonPressed()">runonce</button>
+    <p id="res"></p>
+    <p id="time_result">
+    </p>
+</body>
+
+</html>
