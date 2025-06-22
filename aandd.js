@@ -31,16 +31,36 @@ function show(obj) {
 }
 
 
-function createSequentialNumbers(array, n){
-    for (var i=0;i<n;i++){
-        array.push(i+1);
+function createSequentialNumbers(array, n) {
+    for (var i = 0; i < n; i++) {
+        array.push(i + 1);
     }
 }
 
-function createRandomNumbers(array, n){
+function createRandomNumbers(array, n) {
     var ran_n;
-    for (var i=0;i<n;i++){
-        ran_n=Math.floor(Math.random()*10+1);
+    for (var i = 0; i < n; i++) {
+        ran_n = Math.floor(Math.random() * 10 + 1);
         array.push(ran_n);
     }
 }
+
+function compare_array(array1, array2) {
+    var result = 0;
+    if (array1.length != array2.length) {
+        result = result + 1;
+    } else {
+        for (var i = 0; i < array1.length; i++) {
+            if (array1[i] != array2[i]) {
+                result = result + 2;
+            }
+        }
+    }
+    console.log(result);
+    if (result == 0) {
+        return "True";
+    } else {
+        return "False";
+    }
+}
+
