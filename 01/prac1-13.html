@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var array1 = [];
+            createRandomNumbers(array1, 10);
+            var array2 = plusarray(array1)
+            console.log(array1);
+            console.log(array2);
+        }
+
+        function test(array, expected) {
+            var array1 = changearray(array);
+            console.log(array1);
+            console.log(expected);
+            var check = compare_array(array1, expected)
+            if (check == 0) {
+
+                console.log("正常");
+            } else {
+                console.log("異常");
+            }
+
+        }
+
+        function plusarray(array1) {
+            var array2 = [];
+
+            for (var i = 0; i < array1.length; i++) {
+                if (i == 0) {
+                    var n = Number(array1[0]);
+                    array2.push(n)
+                } else {
+                    var n = array2[i - 1] + Number(array1[i])
+                    array2.push(n)
+                }
+            }
+            return array2;
+        }
+
+        function test(array, expected) {
+            var array1 = plusarray(array);
+
+            var check = compare_array(array1, expected)
+            if (check == 0) {
+                console.log(array1);
+                console.log(expected);
+                console.log("正常");
+            } else {
+                console.log(array1);
+                console.log(expected);
+                console.log("異常");
+            }
+
+        }
+
+        function main() {
+            test([0, 0, 0], [0, 0, 0]);
+            test([-1, 2, 3], [-1, 1, 4]);
+            test([2.3, 1.5, 0.9999], [2.3, 3.8, 4.7999]);
+        }
+        main();
+
+
+
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-13</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
