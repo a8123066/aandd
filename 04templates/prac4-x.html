@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            createRandomNumbers(numbers, 20);
+            var correct_n = Math.floor(Math.random() * 20);
+            var check = check_array(numbers, correct_n);
+            console.log(check);
+            console.log(correct_n);
+            console.log(numbers);
+            if (check == 0) {
+                document.getElementById("result").innerHTML = `同じものはありません`
+            } else {
+                document.getElementById("result").innerHTML = `同じものがあります`
+            }
+        }
+
+        function check_array(array, n) {
+            change_array(array);
+            var check_n = 0;
+            var len = array.length;
+            var new_half_len = Math.round(len) - 1;
+            var old_half_len = 0;
+            var check_len = new_half_len - old_half_len;
+            while (check_len == 1) {
+                if (array[new_half_len] = n) {
+                    check_n += 1;
+                    break;
+                } else if (array[new_half_len] < n) {
+
+                }
+            }
+        }
+
+        function test(array, expected, n) {
+            check = check_array(array, n)
+            console.log(array);
+            console.log(expected);
+            console.log(check);
+            if (expected == check) {
+                console.log("正常")
+            } else {
+                console.log("異常")
+            }
+        }
+
+        function main() {
+            test([1, 2, 3], 1, 1);
+            test([0.1, 0.3, 0.4, 0.3], 2, 0.3);
+            test([], 0, 2);
+            test([-1, -1, 2, 2, 4, -5], 2, -1)
+        }
+
+        function change_array(array) {
+            var len = array.length;
+            for (var i = 0; i < len; i++) {
+                if (i > 0) {
+                    array = change_once_array(array, i)
+                }
+            }
+            return array;
+        }
+
+        function change_once_array(array, t) {
+            for (var i = 0; i < t; i++) {
+                if (array[t - i] < array[t - i - 1]) {
+                    var tmp = array[t - i];
+                    array[t - i] = array[t - i - 1];
+                    array[t - i - 1] = tmp;
+                } else {
+                    break;
+                }
+            }
+            return array;
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>4-x</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="result"></p>
+</body>
+
+</html>
