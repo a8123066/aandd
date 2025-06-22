@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var array1 = [];
+            createSequentialNumbers(array1, 10);
+            var reverse_array1 = make_reverse_array(array1);
+            console.log(array1);
+            console.log(reverse_array1);
+
+        }
+        function make_reverse_array(array) {
+            var reverse_array = []
+            for (var i = 0; i < array.length; i++) {
+                reverse_array.push(array[array.length - i - 1]);
+            }
+            return reverse_array;
+        }
+
+        function test(array, expected) {
+            var array1 = make_reverse_array(array);
+            var check = compare_array(array1, expected);
+            if (check == 0) {
+                console.log("正常");
+            } else {
+                console.log("異常");
+            }
+
+        }
+        function main() {
+            test([2, 4, 5, 7], [7, 5, 4, 2]);
+            test([1, 1], [1, 1]);
+            test([], []);
+        }
+        main();
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-9</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
