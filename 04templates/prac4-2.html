@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var numbers2 = [];
+        function makearray() {
+            createRandomNumbers(numbers2, 10);
+        }
+        function runButtonPressed() {
+            var numbers = [];
+            var start_time = new Date();
+            createRandomNumbers(numbers, 10000);
+            console.log(numbers);
+            show(numbers);
+            changearray(numbers);
+            var end_time = new Date();
+            var period = end_time - start_time;
+            document.getElementById("time_result").innerHTML = period;
+
+            show(numbers)
+        }
+        function runonceButtonPressed() {
+            console.log(numbers2);
+            change_once_array(numbers2);
+            show(numbers2)
+
+        }
+
+        function changearray(array) {
+            var array_len = array.length;
+            for (var i = 0; i < array_len; i++) {
+                for (var k = 0; k < array_len; k++) {
+                    var n1 = array[array_len - 1 - k];
+                    var n2 = array[array_len - 2 - k];
+                    if (n1 < n2) {
+                        array[array_len - 2 - k] = n1;
+                        array[array_len - 1 - k] = n2;
+                    }
+                }
+            }
+            console.log(array)
+            return array;
+        }
+
+        function change_once_array(array) {
+            var array_len = array.length;
+            for (var k = 0; k < array_len; k++) {
+                var n1 = array[array_len - 1 - k];
+                var n2 = array[array_len - 2 - k];
+                if (n1 < n2) {
+                    array[array_len - 2 - k] = n1;
+                    array[array_len - 1 - k] = n2;
+                }
+            }
+            console.log(array)
+            return array;
+        }
+        function test(array, expected) {
+            var new_array = changearray(array);
+            var check = compare_array(new_array, array);
+
+            console.log(expected);
+
+            if (check == 0) {
+                console.log("True");
+            } else {
+                console.log("False")
+            }
+        }
+        function main() {
+            test([2, 66, 6, 78], [2, 6, 66, 78]);
+            test([2, 6, 6, 78], [2, 6, 6, 78]);
+            test([0.11, 0.22, 0.10, 1.11], [0.10, 0.11, 0.22, 1.11]);
+            test([2, -44, 4, 88, -9, 0], [-44, -9, 0, 2, 4, 88]);
+        }
+        main();
+        makearray();
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>4-1</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <button onclick="runonceButtonPressed()">runonce</button>
+    <p id="res"></p>
+    <p id="time_result">
+    </p>
+</body>
+
+</html>
