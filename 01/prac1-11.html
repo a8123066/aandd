@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var array1 = [];
+            createSequentialNumbers(array1, 10);
+            var array2 = twice_array(array1)
+            console.log(array1);
+            console.log(array2);
+        }
+        function twice_array(array) {
+            var array2 = [];
+
+            for (var i = 0; i < array.length; i++) {
+                var n = Number(array[i]);
+                if (n % 2 == 0) {
+                    array2.push(n * 2);
+                }
+            }
+            return array2;
+        }
+
+        function test(array, expected) {
+            var array1 = twice_array(array);
+            var check = compare_array(array1, expected);
+            if (check == 0) {
+                console.log(array1);
+                console.log(expected);
+                console.log("正常");
+            } else {
+                console.log(array1);
+                console.log(expected);
+                console.log("異常");
+            }
+        }
+
+        function main() {
+            test([1, 2, 3], [4]);
+            test([0], [0]);
+            test([1.1], []);
+
+        }
+        main();
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-11</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
