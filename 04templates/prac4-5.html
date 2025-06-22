@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var dictionary = [];
+        function add_array() {
+            var e = document.getElementById("add_english").value;
+            var j = document.getElementById("add_japanese").value;
+            dictionary[e] = j;
+            console.log(dictionary);
+        }
+        function search() {
+            var word = document.getElementById("search_english").value;
+            document.getElementById("display_japanese").value = dictionary[word];
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>追加</h1>
+    英語:<input id="add_english"><br>
+    日本語:<input id="add_japanese">
+    <button onclick="add_array()">追加</button>
+
+    <h1>検索</h1>
+    英語:<input id="search_english"><br>
+    日本語:<input id="display_japanese" readonly>
+    <button onclick="search()">検索</button>
+</body>
+
+</html>
