@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+
+            var array1 = [];
+            createSequentialNumbers(array1, 10);
+            var ran_n = Math.floor(Math.random() * 100);
+            var array2 = changearray(array1, ran_n)
+            console.log(array1);
+            console.log(array2);
+        }
+
+        function test(array, expected, n) {
+            var array1 = changearray(array, n);
+            console.log(array1);
+            console.log(expected);
+            var check = compare_array(array1, expected)
+            if (check == 0) {
+
+                console.log("正常");
+            } else {
+                console.log("異常");
+            }
+
+        }
+
+        function changearray(array1, n) {
+            var array2 = [];
+
+            var al = array1.length;
+            if (al > n) {
+                n = n % al;
+            }
+            for (i = 0; i < al; i++) {
+                var on = (i + n) % al;
+                if (i + n > al - 1) {
+                    array2.push(array1[on]);
+                } else {
+                    array2.push(array1[i + n]);
+                }
+            }
+            console.log(n);
+            return array2;
+        }
+
+        function main() {
+            test([2, 4, 5], [4, 5, 2], 1);
+            test([], []);
+            test([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 1, 2, 3, 4, 5, 6, 7, 8, 9], 9999)
+
+        }
+        main();
+
+
+
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-14</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
