@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+
+            var array1 = [];
+            createSequentialNumbers(array1, 10);
+            var ran_n = Math.floor(Math.random() * 100);
+            var ran_n2 = Math.floor(Math.random() * 10);
+            var array2 = changearray(array1, ran_n, ran_n2)
+            console.log(ran_n);
+            console.log(ran_n2);
+            console.log(array1);
+            console.log(array2);
+        }
+
+        function test(array, expected, n, n2) {
+            var array1 = changearray(array, n, n2);
+            console.log(array1);
+            console.log(expected);
+            var check = compare_array(array1, expected)
+            if (check == 0) {
+
+                console.log("正常");
+            } else {
+                console.log("異常");
+            }
+        }
+
+        function changearray(array1, n1, n2) {
+            var array2 = [];
+            var al = array1.length;
+            if (n2 <= al) {
+                for (var i = 0; i < al + 1; i++) {
+                    if (i == n2) {
+                        array2.push(n1);
+                        if (i < al) {
+                            array2.push(array1[i]);
+                        }
+                    } else {
+                        if (i < al) {
+                            array2.push(array1[i]);
+                        }
+                    }
+                }
+            } else {
+                //配列の範囲を超えた番地に数を挿入することはできない
+                array2 = array1;
+            }
+            return array2;
+        }
+
+        function main() {
+            test([2, 4, 5], [2, 4, 5, 1], 1, 3);
+            test([], [1], 1, 0);
+            test([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 10, 5, 6, 7, 8, 9, 10], 10, 4);
+            test([1, 2, 3, 4], [1, 2, 3, 4], 99, 999)
+
+        }
+
+        main();
+
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-15</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
